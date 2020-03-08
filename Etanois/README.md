@@ -1,7 +1,7 @@
 # Etanois
 
 This application was created with the aim of simplifying the lives of drivers, by comparing the price of gasoline and alcohol.
-![](images/1.png)
+<img src="images/1.png" width="197" height="420"/>
 
 ## Installation
 
