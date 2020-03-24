@@ -3,7 +3,7 @@
 This is a simple application that uses the functions of AudioManager and MediaPlayer to play audio.
 <br><br>
 <img src="images/1.png" width="197" height="420"/>
-<img src="images/2.png" width="197" height="420"/>
+<img src="images/2.png" height="197" width="420"/>
 
 ## Installation
 
