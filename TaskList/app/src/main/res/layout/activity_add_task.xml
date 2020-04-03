@@ -7,6 +7,7 @@
     tools:context=".activity.AddTaskActivity">
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -24,4 +25,5 @@
             android:layout_height="wrap_content"
             android:hint="Task" />
     </com.google.android.material.textfield.TextInputLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

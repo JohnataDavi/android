@@ -28,23 +28,42 @@ public class TaskDAO implements IDAO<Task> {
         cv.put("name", task.getName());
         try {
             write.insert(DbHelper.TASK_TABLE, null, cv);
-            Log.i("INFO", "Task save!");
-        }catch (Exception e){
-            Log.e("INFO", "Erro ao salver task " +  e.getMessage());
+            Log.i("INFO", "Task saved!");
+        } catch (Exception e) {
+            Log.e("INFO", "Error saved!" + e.getMessage());
             return false;
         }
-
         return true;
     }
 
     @Override
     public boolean update(Task task) {
-        return false;
+        ContentValues cv = new ContentValues();
+        cv.put("name", task.getName());
+        try {
+//            String[] args = {"1", "in progress"};
+//            write.update(DbHelper.TASK_TABLE, cv, "id=? AND status = ?", args );
+            String[] args = {task.getId().toString()};
+            write.update(DbHelper.TASK_TABLE, cv, "id=?", args);
+            Log.i("INFO", "Task updated!");
+        } catch (Exception e) {
+            Log.e("INFO", "Error updated!" + e.getMessage());
+            return false;
+        }
+        return true;
     }
 
     @Override
     public boolean delete(Task task) {
-        return false;
+        try {
+            String[] args = {task.getId().toString()};
+            write.delete(DbHelper.TASK_TABLE, "id=?", args);
+            Log.i("INFO", "Task deleted!");
+        } catch (Exception e) {
+            Log.e("INFO", "Error updated!" + e.getMessage());
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -54,7 +73,7 @@ public class TaskDAO implements IDAO<Task> {
         String sql = "SELECT * FROM " + DbHelper.TASK_TABLE + " ;";
         Cursor c = read.rawQuery(sql, null);
 
-        while (c.moveToNext()){
+        while (c.moveToNext()) {
             Long id = c.getLong(c.getColumnIndex("id"));
             String name = c.getString(c.getColumnIndex("name"));
             tasks.add((new Task(id, name)));
